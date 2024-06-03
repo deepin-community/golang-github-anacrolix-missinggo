@@ -1,0 +1,29 @@
+From bfa7df3d8c7a0816df4c3b28ea68561d7598d635 Mon Sep 17 00:00:00 2001
+From: Matt Joiner <anacrolix@gmail.com>
+Date: Fri, 26 Jul 2019 10:47:09 +1000
+Subject: [PATCH] Skip test assuming int is 64 bit
+
+Fixes #16.
+---
+ bitmap/bitmap_test.go | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/bitmap/bitmap_test.go b/bitmap/bitmap_test.go
+index 7861240..7a85e14 100644
+--- a/bitmap/bitmap_test.go
++++ b/bitmap/bitmap_test.go
+@@ -88,7 +88,13 @@ func TestRemoveRange(t *testing.T) {
+ 
+ func TestLimits(t *testing.T) {
+ 	var bm Bitmap
+-	assert.Panics(t, func() { bm.Add(math.MaxInt64) })
++
++	// We can't reliably test out of bounds for systems where int is only 32-bit. Rather than guess
++	// for every possible GOARCH, I'll just skip the test here. The BitIndex/int wrapper around
++	// roaring's types are bad anyway. See https://github.com/anacrolix/missinggo/issues/16.
++
++	//assert.Panics(t, func() { bm.Add(math.MaxInt64) })
++
+ 	bm.Add(-1)
+ 	assert.EqualValues(t, 1, bm.Len())
+ 	assert.EqualValues(t, []int{MaxInt}, bm.ToSortedSlice())

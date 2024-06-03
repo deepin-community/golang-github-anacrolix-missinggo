@@ -1,0 +1,13 @@
+Index: golang-github-anacrolix-missinggo/futures/delayed_test.go
+===================================================================
+--- golang-github-anacrolix-missinggo.orig/futures/delayed_test.go	2022-11-03 16:52:37.101761839 +0100
++++ golang-github-anacrolix-missinggo/futures/delayed_test.go	2022-11-03 16:55:52.271436043 +0100
+@@ -12,7 +12,7 @@
+ 
+ // Delay unit, high enough that system slowness doesn't affect timing, but low
+ // enough to ensure tests are fast.
+-const u = 20 * time.Millisecond
++const u = 40 * time.Millisecond
+ 
+ func TestAsCompletedDelayed(t *testing.T) {
+ 	t.Parallel()
