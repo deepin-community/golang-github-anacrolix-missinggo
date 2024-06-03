@@ -1,5 +1,63 @@
-template-repository (1.0-1) unstable; urgency=medium
+golang-github-anacrolix-missinggo (2.1.0-7) unstable; urgency=low
 
-  * Initial release
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+  [ Drew Parsons ]
+  * debian patch increase_delayed_test_time.patch doubles time delay
+    in delayed_test.go to increase probability of success on armhf
+    (which fails intermittently). Closes: #1021408.
+  * Standards-Version: 4.6.1
+  * update debian/watch to latest github format
+
+ -- Drew Parsons <dparsons@debian.org>  Thu, 03 Nov 2022 17:02:58 +0100
+
+golang-github-anacrolix-missinggo (2.1.0-6) unstable; urgency=medium
+
+  * debian patch drop_64bit_test_bfa7df3.patch applies upstream commit
+    bfa7df3 to skip 64-bit tests, enabling 32-bit builds.
+    Closes: #960775.
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 05 Jun 2020 12:56:26 +0800
+
+golang-github-anacrolix-missinggo (2.1.0-5) unstable; urgency=medium
+
+  * Team upload.
+  * Build and runtime depend on golang-github-prometheus-client-golang-dev
+  * Bump debhelper compatibility level to 13
+  * Declare compliance with Debian Policy 4.5.0
+
+ -- Lucas Kanashiro <kanashiro@debian.org>  Tue, 02 Jun 2020 10:51:01 -0300
+
+golang-github-anacrolix-missinggo (2.1.0-4) unstable; urgency=medium
+
+  * merge Build-Depends-Indep into Build-Depends.
+    The binary files need go source to build.
+
+ -- Drew Parsons <dparsons@debian.org>  Tue, 13 Aug 2019 12:23:30 +0800
+
+golang-github-anacrolix-missinggo (2.1.0-3) unstable; urgency=medium
+
+  * reorganise packages to split Go source from binary files
+    - make golang-github-anacrolix-missinggo-dev (Arch: all) with Go
+      source code and provides Go package Depends. Closes: #934375.
+    - place binary files in golang-github-anacrolix-missinggo-bin-static
+
+ -- Drew Parsons <dparsons@debian.org>  Sun, 11 Aug 2019 12:09:05 +0800
+
+golang-github-anacrolix-missinggo (2.1.0-2) unstable; urgency=medium
+
+  * let dh_auto_install install gocode/src in
+    golang-github-anacrolix-missinggo-dev
+  * Build-Depends: golang-github-anacrolix-envpprof-dev,
+      golang-github-huandu-xstrings-dev,
+      golang-github-ryszard-goskiplist-dev
+
+ -- Drew Parsons <dparsons@debian.org>  Fri, 09 Aug 2019 13:21:15 +0800
+
+golang-github-anacrolix-missinggo (2.1.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #929146)
+
+ -- Drew Parsons <dparsons@debian.org>  Sat, 03 Aug 2019 13:20:54 +0800
